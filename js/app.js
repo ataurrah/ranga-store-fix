@@ -19,7 +19,7 @@ const showProducts = (products) => {
       <h3>${product.title}</h3>
       <p>Category: ${product.category}</p>
       <h2>Price: $ ${product.price}</h2>
-      <h3>Avg.rating: ${product.rating.rate}</h3>
+      <h3>Avg.rating:<i class="fas fa-star"></i> ${product.rating.rate}</h3>
       <h4>Review: ${product.rating.count}</h4>
       <button onclick="addToCart(${product.id},${product.price})" id="addToCart-btn" class="buy-now btn btn-success">add to cart</button>
       <button id="details-btn" class="btn btn-danger">Details</button></div>
@@ -47,7 +47,9 @@ const updatePrice = (id, value) => {
   const convertedOldPrice = getInputValue(id);
   const convertPrice = parseFloat(value);
   const total = convertedOldPrice + convertPrice;
-  document.getElementById(id).innerText =parseFloat(total);
+  const newtotal=total.toFixed(2);
+  document.getElementById(id).innerText =parseFloat(newtotal);
+  updateTotal();
 };
 
 // set innerText function
@@ -77,7 +79,10 @@ const updateTotal = () => {
   const grandTotal =
     getInputValue("price") + getInputValue("delivery-charge") +
     getInputValue("total-tax");
-  document.getElementById("total").innerText = grandTotal;
-  return grandTotal;
+    const newgrandtotal=grandTotal.toFixed(2);
+  document.getElementById("total").innerText = newgrandtotal;
+  return newgrandtotal;
+
 };
 loadProducts();
+updateTotal();
