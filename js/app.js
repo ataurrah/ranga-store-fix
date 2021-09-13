@@ -85,4 +85,4 @@ const updateTotal = () => {
 
 };
 loadProducts();
-updateTotal();
+// updateTotal();
